@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dv5vjhp4co7r1"
+path="res://.godot/imported/Echoes of a Whispers.mp3-6f441000f1603b7e717ab1e68d6e4e7a.mp3str"
+
+[deps]
+
+source_file="res://Echoes of a Whispers.mp3"
+dest_files=["res://.godot/imported/Echoes of a Whispers.mp3-6f441000f1603b7e717ab1e68d6e4e7a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

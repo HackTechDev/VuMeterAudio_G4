@@ -1,0 +1,4 @@
+[https://www.reddit.com/r/godot/comments/1ap8ner/changing_the_colour_of_one_instance_of_a_scene/](https://www.reddit.com/r/godot/comments/1ap8ner/changing_the_colour_of_one_instance_of_a_scene/)
+[https://forum.godotengine.org/t/changing-color-of-new-created-instances/51128](https://forum.godotengine.org/t/changing-color-of-new-created-instances/51128)
+[https://www.youtube.com/watch?v=uKD3IceNBuw](https://www.youtube.com/watch?v=uKD3IceNBuw)
+
