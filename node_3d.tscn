@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bokipxiabfh62"]
+[gd_scene load_steps=24 format=3 uid="uid://bokipxiabfh62"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_2a1gg"]
 [ext_resource type="AudioStream" uid="uid://dv5vjhp4co7r1" path="res://Echoes of a Whispers.mp3" id="2_4j335"]
@@ -17,6 +17,10 @@ size = Vector3(10, 0.5, 10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urtwf"]
 albedo_color = Color(0.263642, 0.307787, 0.79613, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_iqx4q"]
+resource_local_to_scene = true
+material = SubResource("StandardMaterial3D_urtwf")
 
 [sub_resource type="BoxMesh" id="BoxMesh_shiqb"]
 resource_local_to_scene = true
@@ -89,6 +93,7 @@ script = ExtResource("1_2a1gg")
 transform = Transform3D(1, 0, 0, 0, 0.998344, -0.0575292, 0, 0.0575292, 0.998344, 6.02259, 3.58531, 8.34327)
 
 [node name="Floor" type="StaticBody3D" parent="."]
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
@@ -103,6 +108,10 @@ shadow_enabled = true
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.39016, 2.61798, 5.73307)
+
+[node name="led0" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.6, 2, 0)
+mesh = SubResource("BoxMesh_iqx4q")
 
 [node name="led1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -138,6 +147,10 @@ skeleton = NodePath("../led1")
 
 [node name="led8" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.2823, 2, 0)
+mesh = SubResource("BoxMesh_tf0nt")
+
+[node name="led9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.862, 2, 0)
 mesh = SubResource("BoxMesh_tf0nt")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

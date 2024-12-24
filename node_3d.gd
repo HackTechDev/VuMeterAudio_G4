@@ -1,6 +1,6 @@
 extends Node3D
 # Called when the node enters the scene tree for the first time.
-const VU_COUNT = 8
+const VU_COUNT = 10
 const FREQ_MAX = 11050.0
 
 const WIDTH = 800
@@ -13,74 +13,30 @@ var spectrum
 var min_values = []
 var max_values = []
 
+@onready var led0: MeshInstance3D = $led0
 @onready var led1: MeshInstance3D = $led1
 @onready var led2: MeshInstance3D = $led2
 @onready var led3: MeshInstance3D = $led3
 @onready var led4: MeshInstance3D = $led4
-
 @onready var led5: MeshInstance3D = $led5
 @onready var led6: MeshInstance3D = $led6
 @onready var led7: MeshInstance3D = $led7
 @onready var led8: MeshInstance3D = $led8
+@onready var led9: MeshInstance3D = $led9
 
 func _draw():
-	#
-	#var led = get_node('led').duplicate(true)
-	#led.position.x = 1.2
-	#led.position.y = 2
-	#led.position.z = 0
-	#add_child(led)
-	#
-	#
-	#
-	#for child in get_children():
-		#if child.name.substr(0,3) == "led" :
-			#print(child.name)
-			#
-			#
-			#await get_tree().create_timer(0.5).timeout
-			#child.mesh.material.albedo_color = BLUE
-				#
 	
 	var w = WIDTH / VU_COUNT
 	for i in range(VU_COUNT):
 		var min_height = min_values[i]
 		var max_height = max_values[i]
 		var height = lerp(min_height, max_height, ANIMATION_SPEED)
-
-		#Rect2 Rect2(x: float, y: float, width: float, height: float)
-		#draw_rect(
-				#Rect2(w * i, HEIGHT - height, w - 2, height),
-				#Color.from_hsv(float(VU_COUNT * 0.6 + i * 0.5) / VU_COUNT, 0.5, 0.6)
-		#)
-		#
 		
-		
-		
-		if i == 0:
-			led1.scale = Vector3(1, height/50, 1) 
-	
-		if i == 1:
-			led2.scale = Vector3(1, height/50, 1) 
+		var leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
 
-		if i == 2:
-			led3.scale = Vector3(1, height/50, 1) 
-		
-		if i == 3:
-			led4.scale = Vector3(1, height/50, 1) 	
-
-		if i == 4:
-			led5.scale = Vector3(1, height/50, 1) 
-	
-		if i == 5:
-			led6.scale = Vector3(1, height/50, 1) 
-
-		if i == 6:
-			led7.scale = Vector3(1, height/50, 1) 
-		
-		if i == 7:
-			led8.scale = Vector3(1, height/50, 1) 	
-
+		if i >= 0 and i < leds.size():
+			leds[i].scale = Vector3(1, height / 25, 1)
+			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -104,8 +60,6 @@ func _process(delta: float) -> void:
 		if data[i] <= 0.0:
 			min_values[i] = lerp(min_values[i], 0.0, ANIMATION_SPEED)
 
-	# Sound plays back continuously, so the graph needs to be updated every frame.
-	#queue_redraw()
 	_draw()
 
 
