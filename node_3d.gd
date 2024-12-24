@@ -34,8 +34,15 @@ func _draw():
 		var max_height = max_values[i]
 		var height = lerp(min_height, max_height, ANIMATION_SPEED)	
 
+		height = height / 50
+		
 		if i >= 0 and i < leds.size():
-			leds[i].scale = Vector3(1, height / 25, 1)
+			var current_scale = leds[i].scale
+			var current_height = current_scale.y
+			var delta_height = height - current_height
+	
+			leds[i].scale = Vector3(current_scale.x, height, current_scale.z)
+			leds[i].position += Vector3(0, delta_height / 2, 0)
 			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.
