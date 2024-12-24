@@ -27,12 +27,12 @@ var max_values = []
 func _draw():
 	
 	var w = WIDTH / VU_COUNT
+	var leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
+	
 	for i in range(VU_COUNT):
 		var min_height = min_values[i]
 		var max_height = max_values[i]
-		var height = lerp(min_height, max_height, ANIMATION_SPEED)
-		
-		var leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
+		var height = lerp(min_height, max_height, ANIMATION_SPEED)	
 
 		if i >= 0 and i < leds.size():
 			leds[i].scale = Vector3(1, height / 25, 1)
