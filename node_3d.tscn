@@ -90,7 +90,7 @@ sky = SubResource("Sky_4c1w3")
 script = ExtResource("1_2a1gg")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998344, -0.0575292, 0, 0.0575292, 0.998344, 6.02259, 3.58531, 8.34327)
+transform = Transform3D(0.840074, -0.0458848, -0.540528, 0, 0.996416, -0.0845846, 0.542472, 0.0710573, 0.837063, -0.252473, 3.79753, 14.881)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 visible = false
