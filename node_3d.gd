@@ -1,5 +1,5 @@
 extends Node3D
-# Called when the node enters the scene tree for the first time.
+
 const VU_COUNT = 10
 const FREQ_MAX = 11050.0
 
@@ -25,36 +25,36 @@ var leds = []
 @onready var led8: MeshInstance3D = $led8
 @onready var led9: MeshInstance3D = $led9
 
+
 func _draw():
-	
+
 	var led_color
 	var w = WIDTH / VU_COUNT
 	leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
-	
+
 	for i in range(VU_COUNT):
 		var min_height = min_values[i]
 		var max_height = max_values[i]
 		var height = lerp(min_height, max_height, ANIMATION_SPEED)	
 
 		height = height / 30
-		
-		if i >= 0 and i < leds.size():
-			var current_scale = leds[i].scale
-			var current_height = current_scale.y
-			var delta_height = height - current_height
-	
-			led_color = Color.from_hsv(float(VU_COUNT * 0.6 + i * 0.5) / VU_COUNT, 0.5, 0.6)
-			
-			leds[i].scale = Vector3(current_scale.x, height, current_scale.z)
-			leds[i].position += Vector3(0, delta_height / 2, 0)
-		
-			var material = leds[i].mesh.surface_get_material(0).duplicate()
-			leds[i].set_surface_override_material(0, material)
 
-			material.albedo_color = led_color
-			
-			
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+		var current_scale = leds[i].scale
+		var current_height = current_scale.y
+		var delta_height = height - current_height
+
+		led_color = Color.from_hsv(float(VU_COUNT * 0.6 + i * 0.5) / VU_COUNT, 0.5, 0.6)
+		
+		leds[i].scale = Vector3(current_scale.x, height, current_scale.z)
+		leds[i].position += Vector3(0, delta_height / 2, 0)
+
+		# Tip to change a color of a MeshInstance3D node
+		var material = leds[i].mesh.surface_get_material(0).duplicate()
+		leds[i].set_surface_override_material(0, material)
+
+		material.albedo_color = led_color
+
+
 func _process(delta: float) -> void:
 	var data = []
 	var prev_hz = 0
@@ -85,6 +85,3 @@ func _ready():
 	max_values.resize(VU_COUNT)
 	min_values.fill(0.0)
 	max_values.fill(0.0)
-
-
-		
