@@ -12,6 +12,7 @@ const ANIMATION_SPEED = 0.1
 var spectrum
 var min_values = []
 var max_values = []
+var leds = []
 
 @onready var led0: MeshInstance3D = $led0
 @onready var led1: MeshInstance3D = $led1
@@ -26,8 +27,9 @@ var max_values = []
 
 func _draw():
 	
+	var led_color
 	var w = WIDTH / VU_COUNT
-	var leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
+	leds = [led0, led1, led2, led3, led4, led5, led6, led7, led8, led9]
 	
 	for i in range(VU_COUNT):
 		var min_height = min_values[i]
@@ -41,8 +43,11 @@ func _draw():
 			var current_height = current_scale.y
 			var delta_height = height - current_height
 	
+			led_color = Color.from_hsv(float(VU_COUNT * 0.6 + i * 0.5) / VU_COUNT, 0.5, 0.6)
+			
 			leds[i].scale = Vector3(current_scale.x, height, current_scale.z)
 			leds[i].position += Vector3(0, delta_height / 2, 0)
+		
 			
 			
 # Called every frame. 'delta' is the elapsed time since the previous frame.

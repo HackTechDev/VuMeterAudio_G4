@@ -107,7 +107,7 @@ transform = Transform3D(0.995725, 0, 0.0923706, 0, 1, 0, -0.0923706, 0, 0.995725
 script = ExtResource("2_dr33l")
 
 [node name="Camera3D" type="Camera3D" parent="Floor/cam_gimbal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08125, 3.56355, 19.9295)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1423, 3.56355, 9.26933)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0056199, 0.999984, 0, -0.999984, -0.0056199, 10.1662, 8.04586, 2.05537)
