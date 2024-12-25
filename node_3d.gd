@@ -48,13 +48,8 @@ func _draw():
 			leds[i].scale = Vector3(current_scale.x, height, current_scale.z)
 			leds[i].position += Vector3(0, delta_height / 2, 0)
 		
-			var mesh_instance = leds[i]
-		
-
-			var material = mesh_instance.get_surface_override_material(0)
-			if material == null:
-				material = mesh_instance.mesh.surface_get_material(0).duplicate()
-				mesh_instance.set_surface_override_material(0, material)
+			var material = leds[i].mesh.surface_get_material(0).duplicate()
+			leds[i].set_surface_override_material(0, material)
 
 			material.albedo_color = led_color
 			
