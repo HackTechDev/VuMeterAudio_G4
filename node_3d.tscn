@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bokipxiabfh62"]
+[gd_scene load_steps=26 format=3 uid="uid://bokipxiabfh62"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_2a1gg"]
 [ext_resource type="AudioStream" uid="uid://dv5vjhp4co7r1" path="res://Echoes of a Whispers.mp3" id="2_4j335"]
 [ext_resource type="Script" path="res://cam_gimbal.gd" id="2_dr33l"]
+[ext_resource type="Script" path="res://camera_3d.gd" id="3_5sqok"]
 [ext_resource type="Texture2D" uid="uid://dm6hxh46lpdyd" path="res://kloofendal_48d_partly_cloudy_puresky_1k.exr" id="3_qernv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atx2k"]
@@ -108,6 +109,7 @@ script = ExtResource("2_dr33l")
 
 [node name="Camera3D" type="Camera3D" parent="Floor/cam_gimbal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.1423, 3.56355, 9.26933)
+script = ExtResource("3_5sqok")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0056199, 0.999984, 0, -0.999984, -0.0056199, 10.1662, 8.04586, 2.05537)
@@ -166,3 +168,15 @@ autoplay = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ysw7a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 19.0
+offset_top = 521.0
+offset_right = 301.0
+offset_bottom = 622.0
+text = "Move camera: 
+[Q] Left / [D] Right / [S] Down / [Z] Up
+Music volume:
+[W] Decrease / [X] Increase"
