@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bokipxiabfh62"]
+[gd_scene load_steps=25 format=3 uid="uid://bokipxiabfh62"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_2a1gg"]
 [ext_resource type="AudioStream" uid="uid://dv5vjhp4co7r1" path="res://Echoes of a Whispers.mp3" id="2_4j335"]
+[ext_resource type="Script" path="res://cam_gimbal.gd" id="2_dr33l"]
 [ext_resource type="Texture2D" uid="uid://dm6hxh46lpdyd" path="res://kloofendal_48d_partly_cloudy_puresky_1k.exr" id="3_qernv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atx2k"]
@@ -10,10 +11,10 @@ metallic = 1.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_dnh3g"]
 material = SubResource("StandardMaterial3D_atx2k")
-size = Vector3(20, 0.5, 10)
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_k33f4"]
-size = Vector3(10, 0.5, 10)
+size = Vector3(0.5, 0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_urtwf"]
 albedo_color = Color(0.263642, 0.307787, 0.79613, 1)
@@ -89,18 +90,24 @@ sky = SubResource("Sky_4c1w3")
 [node name="Level1" type="Node3D"]
 script = ExtResource("1_2a1gg")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.840074, -0.0458848, -0.540528, 0, 0.996416, -0.0845846, 0.542472, 0.0710573, 0.837063, -0.252473, 3.79753, 14.881)
-
 [node name="Floor" type="StaticBody3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.32114, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+visible = false
 mesh = SubResource("BoxMesh_dnh3g")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+visible = false
 shape = SubResource("BoxShape3D_k33f4")
+
+[node name="cam_gimbal" type="Node3D" parent="Floor"]
+transform = Transform3D(0.995725, 0, 0.0923706, 0, 1, 0, -0.0923706, 0, 0.995725, 0, 0, 0)
+script = ExtResource("2_dr33l")
+
+[node name="Camera3D" type="Camera3D" parent="Floor/cam_gimbal"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08125, 3.56355, 19.9295)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0056199, 0.999984, 0, -0.999984, -0.0056199, 10.1662, 8.04586, 2.05537)

@@ -34,7 +34,7 @@ func _draw():
 		var max_height = max_values[i]
 		var height = lerp(min_height, max_height, ANIMATION_SPEED)	
 
-		height = height / 50
+		height = height / 30
 		
 		if i >= 0 and i < leds.size():
 			var current_scale = leds[i].scale
@@ -76,3 +76,6 @@ func _ready():
 	max_values.resize(VU_COUNT)
 	min_values.fill(0.0)
 	max_values.fill(0.0)
+
+
+		
